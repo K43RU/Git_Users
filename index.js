@@ -1,12 +1,3 @@
-function botao(){
-    let clicar = document.createElement('button');
-    document.body.appendChild(clicar);
-    clicar.innerHTML = "clique aqui";
-    clicar.onclick = mostrarTabela;
-}
-
-botao();
-
 const listUser = [
     { name: 'Bruno Henrique', userName: 'brunohvc' },
     { name: 'Vytor Augusto Rosa', userName: 'K43RU' },
@@ -29,6 +20,9 @@ const listUser = [
     { name: 'Otavio Matheus Neves', userName: 'otavionvs' }
 ]
 
+let botao = document.createElement('button');
+botao.innerHTML = "clique";
+
 function mostrarTabela(){
     const actualTable = document.querySelector('table');
     if (actualTable) {
@@ -39,21 +33,23 @@ function mostrarTabela(){
     const linha = document.createElement('tr');
     const colunaNome = document.createElement('th');
     const colunaUsuario = document.createElement('th');
+    const colunaBotao = document.createElement('th');
+    
+    tabela.appendChild(linha);
 
-    colunaNome.innerText = "nome";
-    colunaUsuario.innerText = "Usarname";
+    colunaNome.innerText = 'nome';
+    colunaUsuario.innerText = 'Usarname';
 
     linha.appendChild(colunaNome);
     linha.appendChild(colunaUsuario);
+    linha.appendChild(colunaBotao);
 
     listUser.forEach(function (element){
-        console.log('element', element);
         const linhaTabela = criarTabela(
             element.name,
             element.userName
         )
-
-            tabela.appendChild(linhaTabela)
+            tabela.appendChild(linhaTabela);
 
     })
     document.body.appendChild(tabela);
@@ -64,11 +60,16 @@ function criarTabela(name, userName) {
     const linha = document.createElement('tr');
     const colunaNome = document.createElement('td');
     const colunaUsuario = document.createElement('td');
+    const colunaBotao = document.createElement('td');
 
     colunaNome.innerText = name;
     colunaUsuario.innerText = userName;
+    colunaBotao.appendChild(botao);
 
     linha.appendChild(colunaNome);
     linha.appendChild(colunaUsuario);
+    linha.appendChild(colunaBotao);
     return linha;
 }
+
+mostrarTabela();
