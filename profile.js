@@ -22,25 +22,29 @@ function getUserReposGithub(userName) {
         .then(function (resultado) {
             resultado.json().then(function (data) {
                 console.log('Repositories Data:', data);
+                showRepos(data);
             });
         }).catch(function (erro) {
             console.log('erro:', erro);
         });
 }
 
-function showUserGithub(user, data) {
+function showRepos(repos){
+    if (!repos) return;
+    let divRepositories = document.createElement('div');
+    divRepositories = repos.id;
+    document.body.appendChild(divRepositories);
+}
+
+function showUserGithub(user) {
     if (!user) return;
     let divName = document.createElement('div');
     let divImage = document.createElement('img');
-    let divRepositories = document.createElement('div');
     divImage.id = "avatar";
 
-    divRepositories.innerText = user.name;
     divImage.src = user.avatar_url;
     divName.innerText = user.login;
     
     document.body.appendChild(divImage);
     document.body.appendChild(divName);
-
-    document.body.appendChild(divRepositories);
 }

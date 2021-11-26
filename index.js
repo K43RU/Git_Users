@@ -8,6 +8,7 @@ const listUser = [
     { name: 'Ester Girelli', userName: 'Esterzinha12' },
     { name: 'Gustavo Rebelatto Zapella', userName: 'rebelattogustavo' },
     { name: 'Henrique Cole Fernandes', userName: 'HenriqueCole' },
+    { name: 'Kenzo Hideaky Ferreira Sato', userName: 'Kenzohfs' },
     { name: 'Vinícius Bonatti Benner', userName: 'viniciusz1' },
     { name: 'Leonardo Heitor Poglia', userName: 'leopoglia' },
     { name: 'Felipe Mielke Vieira', userName: 'FelipeMielkeVieira' },
