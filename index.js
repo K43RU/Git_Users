@@ -20,9 +20,6 @@ const listUser = [
     { name: 'Otavio Matheus Neves', userName: 'otavionvs' }
 ]
 
-let botao = document.createElement('button');
-botao.innerHTML = "clique";
-
 function mostrarTabela(){
     const actualTable = document.querySelector('table');
     if (actualTable) {
@@ -55,12 +52,21 @@ function mostrarTabela(){
     document.body.appendChild(tabela);
 }
 
+function mostrarUser(){
+    const user = document.createElement('p');
+    user.innerText = function(){(getUserGithub(userName))}
+}
+
 function criarTabela(name, userName) {
+    const botao = document.createElement('button');
+    botao.innerHTML = "clique";
 
     const linha = document.createElement('tr');
     const colunaNome = document.createElement('td');
     const colunaUsuario = document.createElement('td');
     const colunaBotao = document.createElement('td');
+
+    botao.onclick = function(){(otherpage(userName))};
 
     colunaNome.innerText = name;
     colunaUsuario.innerText = userName;
@@ -73,3 +79,37 @@ function criarTabela(name, userName) {
 }
 
 mostrarTabela();
+
+function otherpage(userName){
+    window.location.href = "profile.html?" + userName;
+}
+
+function getUserGithub(userName) {
+    fetch('https://api.github.com/users/' + userName)
+        .then(function (resultado) {
+            resultado.json().then(function (data) {
+                console.log('User Data:', data);
+                showUserGithub(data);
+            });
+        }).catch(function (erro) {
+            console.log('erro:', erro);
+        });
+}
+
+function showUserGithub(user) {
+    if (!user) return;
+    let divName = document.createElement('div');
+    divName.innerText = user.login;
+    document.body.appendChild(divName);
+}
+
+function getUserReposGithub(userName) {
+    fetch('https://api.github.com/users/' + userName + '/repos')
+        .then(function (resultado) {
+            resultado.json().then(function (data) {
+                console.log('Repositories Data:', data);
+            });
+        }).catch(function (erro) {
+            console.log('erro:', erro);
+        });
+}
