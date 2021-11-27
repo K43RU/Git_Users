@@ -32,8 +32,11 @@ function getUserReposGithub(userName) {
 function showRepos(repos){
     if (!repos) return;
     let divRepositories = document.createElement('div');
-    divRepositories = repos.id;
+    var i;
+    for(i = 0; i <= 2; i++){
+    divRepositories.innerText = repos.name;
     document.body.appendChild(divRepositories);
+    }
 }
 
 function showUserGithub(user) {
