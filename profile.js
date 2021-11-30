@@ -17,25 +17,6 @@ function getUserGithub(userName) {
         });
 }
 
-function getUserReposGithub(userName) {
-    fetch('https://api.github.com/users/' + userName + '/repos')
-        .then(function (resultado) {
-            resultado.json().then(function (data) {
-                console.log('Repositories Data:', data);
-                showRepos(data);
-            });
-        }).catch(function (erro) {
-            console.log('erro:', erro);
-        });
-}
-
-function showRepos(repos){
-    if (!repos) return;
-    let divRepositories = document.createElement('div');
-    divRepositories = repos.id;
-    document.body.appendChild(divRepositories);
-}
-
 function showUserGithub(user) {
     if (!user) return;
     let divName = document.createElement('div');
@@ -47,4 +28,22 @@ function showUserGithub(user) {
     
     document.body.appendChild(divImage);
     document.body.appendChild(divName);
+}
+
+function getUserReposGithub(user) {
+    
+    fetch('https://fake-github.herokuapp.com/api/search/' + userName + '/repos')
+        .then(function (resultado) {
+            resultado.json().then(function (dataRepositorio) {
+                dataRepositorio.forEach(function (element) {
+
+                    const line = document.createElement('div')
+                    line.id = "line";
+                    document.body.appendChild(line);
+                    line.innerText = element.name;
+                });
+            });
+        }).catch(function (erro) {
+            console.log('erro:', erro);
+        });
 }

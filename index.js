@@ -114,3 +114,52 @@ function getUserReposGithub(userName) {
             console.log('erro:', erro);
         });
 }
+
+    let button = document.createElement('button');
+    button.className = 'button';
+    button.innerHTML = "add+";
+    document.body.appendChild(button);
+
+    let cadastro = document.createElement('div');
+    let Inputnome = document.createElement('input');
+    let InputUser = document.createElement('input');
+    let cadastrar = document.createElement('button');
+
+    cadastrar.className = 'cadastrar';
+    Inputnome.className = 'nameInp';
+    InputUser.className = 'usernameInp';
+
+    Inputnome.type = 'text';
+    InputUser.type = 'text';
+
+function ModalAppear(){
+    let quadrado = document.createElement('div');
+    quadrado.className = 'quadrado';
+
+    document.body.appendChild(quadrado);
+
+    quadrado.appendChild(cadastro);
+
+    cadastro.appendChild(Inputnome);
+    cadastro.appendChild(InputUser);
+    cadastro.appendChild(cadastrar);
+
+    function addGitUser(){ 
+            
+        let nomes = document.querySelector('.nameInp').value;
+        let users = document.querySelector('.usernameInp').value; 
+
+        let retornar = {
+        nome: nomes,
+        userName: users
+    }
+
+    listUser.push(retornar);
+    Inputnome.value = "";
+    InputUser.value = "";
+
+}
+    cadastrar.onclick = addGitUser;
+}
+button.onclick = ModalAppear;
+
